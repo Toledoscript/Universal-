@@ -1,0 +1,308 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "Universal ",
+   Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+   LoadingTitle = "Universal script",
+   LoadingSubtitle = "by Toledo",
+   Theme = "Bloom", -- Check https://docs.sirius.menu/rayfield/configuration/themes
+
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
+
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "Universal script"
+   },
+
+   Discord = {
+      Enabled = false, -- Prompt the user to join your Discord server if their executor supports it
+      Invite = "discord.gg/JAXF77Ku", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+
+   KeySystem = true, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "UNIVERSAL KEY SYSTEM",
+      Subtitle = "Key System",
+      Note = "https://pastebin.com/raw/NefkkKri", -- Use this to tell the user how to get a key
+      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"TOLEDO-IS-COOL"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+
+Rayfield:Notify({
+   Title = "Join the discord",
+   Content = "discord.gg/JAXF77Ku",
+   Duration = 5,
+   Image = 4483362458,
+})
+
+local Tab = Window:CreateTab("Battleground script", 4483362458) -- Title, Image
+
+local Button = Tab:CreateButton({
+   Name = "Op battleground",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Belvelthesecond/TOLEDO/refs/heads/main/SCRIPTS"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Heroes battleground",
+   Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/alan11ago/Hub/refs/heads/main/ImpHub.lua'))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Sukuna battleground",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ADSKerOffical/SukunaBattlegrounds/main/Battlegrounds"))() 
+   end,
+})
+
+local Tab = Window:CreateTab("Auto farm", 4483362458) -- Title, Image
+
+local Button = Tab:CreateButton({
+   Name = "Blox Fruit",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaCrack/Min/refs/heads/main/MinMasEng"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Fish OP",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Ice Fishing Simulator",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ProjectpopCat/ywxoscripts/main/IceFishingSimulator.lua"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Legend Of Speed",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Harley-HUB/Legends-Of-Speed/main/Legends%20Of%20Speed", true))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "King Legacy",
+   Callback = function()
+loadstring(game:HttpGet("https://cracklua.github.io/cracks/arc"))() 
+   end,
+})
+
+local Tab = Window:CreateTab("Simulator Script", 4483362458) -- Title, Image
+
+local Button = Tab:CreateButton({
+   Name = "Sonic Speed Simulator",
+   Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/alan11ago/Hub/refs/heads/main/ImpHub.lua'))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Lifting Legends Simulato",
+   Callback = function()
+while true do
+         wait()
+game:GetService("ReplicatedStorage").Packages._Index["sleitnick_knit@1.5.1"].knit.Services.ChestService.RF.ClaimDailyChest:InvokeServer()
+game:GetService("ReplicatedStorage").Packages._Index["sleitnick_knit@1.5.1"].knit.Services.ChestService.RF.ClaimGroupChest:InvokeServer()
+end 
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Build A Boat Simulator",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ProjectpopCat/ywxoscripts/main/BuildABoatSimulator.lua"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Sonic Speed Simulator",
+   Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/alan11ago/Hub/refs/heads/main/ImpHub.lua'))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Destruction Simulator",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ShrimpsHub/ShrimpsHub/main/ShrimpsHub"))()
+   end,
+})
+
+local Tab = Window:CreateTab("Racing script", 4483362458) -- Title, Image
+
+local Button = Tab:CreateButton({
+   Name = "Swim League",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ProjectpopCat/ywxoscripts/main/swimleague.lua"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Money Race",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ProjectpopCat/Retarded_German/main/MoneyRace.lua"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Meme Race",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ToraScript/Script/refs/heads/main/MemeRace", true))() 
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Fly Race",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Amenteso/robloxscripts/main/Key.lua",true))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Skibidi Race",
+   Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/ToraScript/Script/main/SkibidiRace'))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Animal Race",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ProjectpopCat/ywxoscripts/main/AnimalRace2222.lua"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = " Race",
+   Callback = function()
+
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "kart Race",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Toledoscript/Universal-/refs/heads/main/Kart%20race"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Car Race",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Tora//main/CarRace"))()
+   end,
+})
+
+local Tab = Window:CreateTab("Gamepass script", 4483362458) -- Title, Image
+
+local Button = Tab:CreateButton({
+   Name = "Universal gamepass",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Toledoscript/Universal-/refs/heads/main/Gamepass"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Wyven",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Toledoscript/Universal-/refs/heads/main/Wyvern"))()
+   end,
+})
+
+local Tab = Window:CreateTab("Misc", 4483362458) -- Title, Image
+
+local Button = Tab:CreateButton({
+   Name = "fly v3",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Inf jump",
+   Callback = function()
+local InfiniteJumpEnabled = true
+game:GetService("UserInputService").JumpRequest:connect(function()
+	if InfiniteJumpEnabled then
+		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+	end
+end)
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "inf yield",
+   Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Inf jump",
+   Callback = function()
+mouse = game.Players.LocalPlayer:GetMouse()
+tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Name = "QQ Teleport"
+tool.Activated:connect(function()
+local pos = mouse.Hit+Vector3.new(0,2.5,0)
+pos = CFrame.new(pos.X,pos.Y,pos.Z)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+end)
+tool.Parent = game.Players.LocalPlayer.Backpack
+   end,
+})
+
+local Slider = Tab:CreateSlider({
+   Name = "Walk Speed",
+   Range = {1, 1000},
+   Increment = 10,
+   Suffix = "WalkSpeed",
+   CurrentValue = 10,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(v)
+   game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Reset Speed",
+   Interact = 'Click',
+   Callback = function()
+   game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+   end,
+})
+
+local Slider = Tab:CreateSlider({
+   Name = "Jump Power",
+   Range = {50, 1000},
+   Increment = 10,
+   Suffix = "JumpPower",
+   CurrentValue = 10,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(v)
+   game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Reset Jump Power",
+   Interact = 'Click',
+   Callback = function()
+   game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+   end,
+})
