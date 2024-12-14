@@ -1,0 +1,466 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+if game.PlaceId == 15338697306 then
+
+    Rayfield:Notify({
+       Title = "Script executed",
+       Content = "Script by Toledo",
+       Duration = 6.5,
+       Image = 4483362458,
+       Actions = {
+          Ignore = {
+             Name = "Okay!",
+             Callback = function()
+             print("The user tapped Okay!")
+          end
+       },
+    },
+    })
+
+    local RainbowKartToggled = false
+    local AutoRebrithToggled = false
+    local AutoWinMultiplyToggled = false
+    
+    local Window = Rayfield:CreateWindow({
+       Name = "Go Kart Race Simulator | Script by Devappl",
+       LoadingTitle = "Go Kart Race Simulator Script",
+       LoadingSubtitle = "by Toledo",
+       ConfigurationSaving = {
+          Enabled = flase,
+          FolderName = nil,
+          FileName = "goKartRaceSimulatorScript"
+       },
+       Discord = {
+          Enabled = false,
+          Invite = "noinvitelink",
+          RememberJoins = true
+       },
+       KeySystem = false,
+       KeySettings = {
+          Title = "Go Kart Race Simulator Script",
+          Subtitle = "by Toledo",
+          Note = "This script is in closed beta, no keys are currently available.",
+          FileName = "Keysystem", 
+          SaveKey = false, 
+          GrabKeyFromSite = false, 
+          Key = {"Sub-toledo"} 
+       }
+    })
+
+    
+    local MainTab = Window:CreateTab("Home", 4483362458)
+    local MainSection = MainTab:CreateSection("Main")
+
+    local ClickerTab = Window:CreateTab("Clicker", 4483362458)
+    local ClickerSection = ClickerTab:CreateSection("Clicker")
+
+    local PlayerTab = Window:CreateTab("Player", 4483362458)
+    local PlayerSection = PlayerTab:CreateSection("Player")
+
+    local EggTab = Window:CreateTab("Eggs", 4483362458)
+    local EggSection = EggTab:CreateSection("Eggs")
+
+    local RewardsTab = Window:CreateTab("Rewards", 4483362458)
+    local RewardsSection = RewardsTab:CreateSection("Rewards")
+
+    local KartsTab = Window:CreateTab("Karts", 4483362458) 
+    local KartsSection = KartsTab:CreateSection("Karts")
+
+    local ScriptsTab = Window:CreateTab("Scripts", 4483362458)
+    local ScriptsSection = ScriptsTab:CreateSection("Scripts")
+
+
+    -----[ MAIN TAB ]-----
+    
+    local Paragraph = MainTab:CreateParagraph({Title = "Script Information", Content = "I will probably not update this script much more, this is the best it will get with the games limitations and my current skill. (And also the softlock I put myself in with -9.22QN wins)"})
+
+    
+    -----[ EGGS TAB ]-----
+
+    local EggLabel = EggTab:CreateLabel("Normal eggs require you to have their UI open")
+
+    local EggDropdown = EggTab:CreateDropdown({
+       Name = "Select Egg",
+       Options = {"Common Egg","Space Egg"},
+       CurrentOption = {"Common Egg"},
+       MultipleOptions = false,
+       Flag = "selectEgg",
+       Callback = function(Option)
+                print((Option[1]))
+       end,
+    })
+
+    local RobuxEggDropdown = EggTab:CreateDropdown({
+       Name = "Select Robux Egg",
+       Options = {"Magma Egg","Deadly Egg", "Dominus Egg"},
+       CurrentOption = {"Magma Egg"},
+       MultipleOptions = false,
+       Flag = "selectRobuxEgg",
+       Callback = function(Option)
+                print((Option[1]))
+       end,
+    })
+
+    local EggAmountLabel = EggTab:CreateLabel("Bypassing triple hatch only works sometimes")
+    
+    local EggAmountSlider = EggTab:CreateSlider({
+       Name = "Egg Amount",
+       Range = {1, 1000},
+       Increment = 1,
+       Suffix = "Eggs",
+       CurrentValue = 1,
+       Flag = "eggAmountSlider",
+       Callback = function(Value)
+            print((Value))
+       end,
+    })
+
+    local BasicHatchButton = EggTab:CreateButton({
+       Name = "Hatch Normal Egg(s)",
+       Callback = function()
+                game:GetService("ReplicatedStorage"):WaitForChild("Assets"):WaitForChild("Signals"):WaitForChild("Functions"):WaitForChild("BuyEgg"):InvokeServer(EggDropdown.CurrentOption[1], EggAmountSlider.CurrentValue)
+        end,
+    })
+
+    local RobuxHatchButton = EggTab:CreateButton({
+       Name = "Hatch Robux Egg(s)",
+       Callback = function()
+                game:GetService("ReplicatedStorage"):WaitForChild("Assets"):WaitForChild("Signals"):WaitForChild("Functions"):WaitForChild("BuyEgg"):InvokeServer(RobuxEggDropdown.CurrentOption[1], EggAmountSlider.CurrentValue)
+        end,
+    })
+
+    
+    -----[ PLAYER TAB ]-----
+
+    local SpeedSlider = PlayerTab:CreateSlider({
+       Name = "Speed Slider",
+       Range = {1, 250},
+       Increment = 1,
+       Suffix = "Speed",
+       CurrentValue = 16,
+       Flag = "speedSlider",
+       Callback = function(Value)
+            while wait() do
+                game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
+            end
+       end,
+    })
+
+    local UnstuckButton = PlayerTab:CreateButton({
+       Name = "Unstuck",
+       Callback = function()
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("EndRace"):FireServer()
+                print("Attempted to leave race")
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Train"):FireServer("Nil","Finish")
+                print("Attempted to stop training")
+       end,
+    })
+
+    
+    -----[ CLICKER TAB ]-----
+
+    local WinsWarningLabel = ClickerTab:CreateLabel("Getting more than 9.22QN wins will set them to -9.22QN. This will  make it so that you will not be able to buy certain things anymore")
+
+    local WinsMultiplierDropdown = ClickerTab:CreateDropdown({
+       Name = "Wins Multiplier",
+       Options = {"x1.12","x1.15","x1.17"},
+       CurrentOption = {"x1.12"},
+       MultipleOptions = false,
+       Flag = "selectMultiplierReward",
+       Callback = function(Option)
+                print((Option[1]))
+       end,
+    })
+
+    local MultiplyWinsButton = ClickerTab:CreateButton({
+       Name = "Multiply Wins",
+       Callback = function()
+                if WinsMultiplierDropdown.CurrentOption[1] == "x1.12" then
+                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Spin"):FireServer(7)
+                elseif WinsMultiplierDropdown.CurrentOption[1] == "x1.15" then
+                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Spin"):FireServer(1)
+                elseif WinsMultiplierDropdown.CurrentOption[1] == "x1.17" then
+                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Spin"):FireServer(6)
+                else
+                    print("Win Multiplication Error")
+                end
+       end,
+    })
+
+    local AutoWinMultiplyToggle = ClickerTab:CreateToggle({
+       Name = "Auto Multiply Wins",
+       CurrentValue = false,
+       Flag = "autoMultiplyWins",
+       Callback = function(Value)
+            AutoWinMultiplyToggled = not AutoWinMultiplyToggled
+            if AutoWinMultiplyToggled then
+                while AutoWinMultiplyToggled do
+                    if WinsMultiplierDropdown.CurrentOption[1] == "x1.12" then
+                        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Spin"):FireServer(7)
+                    elseif WinsMultiplierDropdown.CurrentOption[1] == "x1.15" then
+                        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Spin"):FireServer(1)
+                    elseif WinsMultiplierDropdown.CurrentOption[1] == "x1.17" then
+                        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Spin"):FireServer(6)
+                    else
+                        print("Auto Win Multiplication Error")
+                    end
+                    wait()
+                end
+            end
+       end,
+    })
+
+    local PowerWarningLabel = ClickerTab:CreateLabel("Getting more than 9.22QN power will set it to -9.22QN. Having negative power makes you move at 0 speed")
+
+    local PowerInput = ClickerTab:CreateInput({
+       Name = "Give Power",
+       PlaceholderText = "0",
+       RemoveTextAfterFocusLost = true,
+       Callback = function(Text)
+                local text_without_quotes = Text:gsub('"', '')
+                local integer_value = tonumber(text_without_quotes)
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ClientRemote"):InvokeServer("Train","Power",(tonumber(integer_value)/2)-50)
+       end,
+    })
+
+    local RebirthButton = ClickerTab:CreateButton({
+       Name = "Rebirth",
+       Callback = function()
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ClientRemote"):InvokeServer("Rebirth")
+       end,
+    })
+    
+    local AutoRebirthToggle = ClickerTab:CreateToggle({
+       Name = "Auto Rebirth",
+       CurrentValue = false,
+       Flag = "autoRebirth",
+       Callback = function(Value)
+            AutoRebrithToggled = not AutoRebrithToggled
+            if AutoRebrithToggled then
+                while AutoRebrithToggled do
+                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ClientRemote"):InvokeServer("Rebirth")
+                    wait()
+                end
+            end
+       end,
+    })
+
+
+    -----[ REWARDS TAB ]-----
+
+    local ClaimAllRewardsButton = RewardsTab:CreateButton({
+        Name = "Claim All Rewards",
+        Callback = function()
+            local countMax = 8
+            local count = 0
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("addSpin"):FireServer()
+            print("Attempted to add Spins")
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("XmasK"):FireServer()
+            print("Attempted to claim Free Kart")
+    
+            for i = 1, countMax do
+                count = count + 1
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Daily"):FireServer("D"..count)
+                print("Attempted to claim Daily Gift",count)
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Gift"):FireServer("G"..count)
+                print("Attempted to claim Playtime Reward",count)
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Spin"):FireServer(count)
+                print("Attempted to claim Wheel Reward",count)
+
+            end
+        end
+    })
+
+    local VerifyButton = RewardsTab:CreateButton({
+       Name = "Spoof Verify Twitter",
+       Callback = function()
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ClientRemote"):InvokeServer("Verify")
+        end,
+    })
+
+    local RewardSelectionLabel = RewardsTab:CreateLabel("Only the wheel has 8 bonuses, selecting higher than 7 on daily or playtime does nothing")
+    
+    local RewardDropdown = RewardsTab:CreateDropdown({
+       Name = "Reward Type",
+       Options = {"Daily","Playtime","Wheel"},
+       CurrentOption = {"Daily"},
+       MultipleOptions = false,
+       Flag = "selectReward",
+       Callback = function(Option)
+                print((Option[1]))
+       end,
+    })
+
+    local RewardsSlider = RewardsTab:CreateSlider({
+       Name = "Reward Number",
+       Range = {1, 8},
+       Increment = 1,
+       Suffix = "",
+       CurrentValue = 1,
+       Flag = "rewardsSlider",
+       Callback = function(Value)
+                print((Value))
+       end,
+    })
+
+    local RewardButton = RewardsTab:CreateButton({
+       Name = "Give Selected Reward",
+       Callback = function()
+                if RewardDropdown.CurrentOption[1] == "Daily" then
+                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Daily"):FireServer("D"..RewardsSlider.CurrentValue)
+                    print("Attempted to claim Daily Gift",RewardsSlider.CurrentValue)
+                elseif RewardDropdown.CurrentOption[1] == "Playtime" then
+                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Gift"):FireServer("G"..RewardsSlider.CurrentValue)
+                    print("Attempted to claim Playtime Reward",RewardsSlider.CurrentValue)
+                elseif RewardDropdown.CurrentOption[1] == "Wheel" then
+                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Spin"):FireServer(RewardsSlider.CurrentValue)
+                    print("Attempted to claim Wheel Reward",RewardsSlider.CurrentValue)
+                else 
+                    print("Reward Button Error")
+                end
+        end,
+    })
+
+    local BoostLabel = RewardsTab:CreateLabel("Boosts might take a while to show up")
+
+    local BoostDropdown = RewardsTab:CreateDropdown({
+       Name = "Boost Type",
+       Options = {"x2 Stats","x2 Wins"},
+       CurrentOption = {"x2 Stats"},
+       MultipleOptions = false,
+       Flag = "selectBoost",
+       Callback = function(Option)
+                print((Option[1]))
+       end,
+    })
+
+    local BoostDurationDropdown = RewardsTab:CreateDropdown({
+       Name = "Boost duration",
+       Options = {"15 Minutes","1 Hour"},
+       CurrentOption = {"15 Minutes"},
+       MultipleOptions = false,
+       Flag = "selectBoostDuration",
+       Callback = function(Option)
+                print((Option[1]))
+       end,
+    })
+
+    local GiveBoostButton = RewardsTab:CreateButton({
+       Name = "Give Boost",
+       Callback = function()
+                if BoostDropdown.CurrentOption[1] == "x2 Stats" then
+                    if BoostDurationDropdown.CurrentOption[1] == "15 Minutes" then
+                        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Gift"):FireServer("G7")
+                    elseif BoostDurationDropdown.CurrentOption[1] == "1 Hour" then
+                        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Daily"):FireServer("D3")
+                    else 
+                        print("Stats Boost Error")
+                    end
+                elseif BoostDropdown.CurrentOption[1] == "x2 Wins" then
+                    if BoostDurationDropdown.CurrentOption[1] == "15 Minutes" then
+                        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Gift"):FireServer("G3")
+                    elseif BoostDurationDropdown.CurrentOption[1] == "1 Hour" then
+                        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Daily"):FireServer("D4")
+                    else 
+                        print("Win Boost Error")
+                    end
+                else 
+                    print("Boost Button Error")
+                end
+        end,
+    })
+
+    -----[ SCRIPTS TAB ]-----
+
+    local ScriptsLabel = ScriptsTab:CreateLabel("Utility scripts that might come in handy")
+
+    local InfiniteYieldButton = ScriptsTab:CreateButton({
+       Name = "Infinite Yield v5.9.4",
+       Callback = function()
+                loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+        end,
+    })
+
+    local SimpleSpyButton = ScriptsTab:CreateButton({
+       Name = "Simple Spy v3",
+       Callback = function()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/78n/SimpleSpy/main/SimpleSpySource.lua"))()
+        end,
+    })
+
+    -----[ KARTS TAB ]-----
+
+    local SpecialKartLabel = KartsTab:CreateLabel('The special kart is sometimes a "Xmas" kart, and sometimes a "Heart" kart')
+
+    local SpecialKartButton = KartsTab:CreateButton({
+       Name = "Give Special Kart",
+       Callback = function()
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("XmasK"):FireServer()
+        end,
+    })
+
+    local RainbowLabel = KartsTab:CreateLabel("Each rainbow cycle costs 878200 wins")
+
+    local RainbowDelaySlider = KartsTab:CreateSlider({
+       Name = "Rainbow Delay",
+       Range = {1, 1000},
+       Increment = 1,
+       Suffix = "Ms",
+       CurrentValue = 100,
+       Flag = "rainbowDelaySlider",
+       Callback = function(Value)
+                print((Value))
+       end,
+    })
+    
+    local RainbowKartToggle = KartsTab:CreateToggle({
+       Name = "Rainbow Kart",
+       CurrentValue = false,
+       Flag = "rainbowKart",
+       Callback = function(Value)
+            AutoRebrithToggled = not AutoRebrithToggled
+            if AutoRebrithToggled then
+                while AutoRebrithToggled do
+                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("BuyKick"):FireServer("Really red")
+                    wait(RainbowDelaySlider.CurrentValue/1000)
+                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("BuyKick"):FireServer("New Yeller")
+                    wait(RainbowDelaySlider.CurrentValue/1000)
+                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("BuyKick"):FireServer("Earth green")
+                    wait(RainbowDelaySlider.CurrentValue/1000)
+                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("BuyKick"):FireServer("Cyan")
+                    wait(RainbowDelaySlider.CurrentValue/1000)
+                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("BuyKick"):FireServer("Dark indigo")
+                    wait(RainbowDelaySlider.CurrentValue/1000)
+                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("BuyKick"):FireServer("Hot pink")
+                    wait(RainbowDelaySlider.CurrentValue/1000)
+                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("BuyKick"):FireServer("Reddish brown")
+                    wait(RainbowDelaySlider.CurrentValue/1000)
+                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("BuyKick"):FireServer("Dark stone grey")
+                    wait(RainbowDelaySlider.CurrentValue/1000)
+                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("BuyKick"):FireServer("Bronze")
+                    wait(RainbowDelaySlider.CurrentValue/1000)
+                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("BuyKick"):FireServer("Gold")
+                    wait(RainbowDelaySlider.CurrentValue/1000)
+                end
+            end
+       end,
+    })
+
+
+else
+    Rayfield:Notify({
+       Title = "Script failed",
+       Content = "Not in the correct game",
+       Duration = 6.5,
+       Image = 4483362458,
+       Actions = {
+          Ignore = {
+             Name = "Okay!",
+             Callback = function()
+             print("The user tapped Okay!")
+          end
+       },
+    },
+    })
+end
