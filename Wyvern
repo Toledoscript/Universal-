@@ -95,7 +95,7 @@ uiCorner.Parent = frame
 
 titleLabel.Size = UDim2.new(1, 0, 0.3, 0)
 titleLabel.Position = UDim2.new(0, 0, 0, 0)
-titleLabel.Text = "------< Wynerd Currently Not Working >--------"
+titleLabel.Text = "------< Subscribe to toledo_channels >--------"
 titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 titleLabel.TextScaled = true
 titleLabel.BackgroundTransparency = 1
@@ -122,7 +122,7 @@ end)
 
 discordButton.Size = UDim2.new(0.45, 0, 0.2, 0)
 discordButton.Position = UDim2.new(0.5, 0, 0.7, 0)
-discordButton.Text = "[Support Discord]"
+discordButton.Text = "[Support YouTube]"
 discordButton.BackgroundColor3 = Color3.fromRGB(0, 0, 150)
 discordButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 discordButton.Parent = frame
@@ -132,7 +132,7 @@ discordButton.MouseButton1Click:Connect(function()
     wait(3.5) 
     if true then 
         sendNotification('Toledo Wyborn script', 'Connecting to support... Checking Age acc: ' .. game.Players.LocalPlayer.AccountAge)
-        setclipboard("discord.gg/JAXF77Ku = https://discord.gg/JAXF77Ku") 
+        setclipboard("www.youtube.com/@Toledo_channels = https://www.youtube.com/@Toledo_channels") 
         wait(1)
         executor() 
         wait(2) 
